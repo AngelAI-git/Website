@@ -156,16 +156,19 @@ const BackgroundWaves = () => {
     "M1540,200 C1200,200 1000,500 800,300 C600,100 400,400 -100,300"
   ];
 
-  /* Mobile Paths: Dispersed, coming from corners, avoiding center congestion */
+  /* Mobile Paths: Dispersed, sinus & loops only, multi-directional */
   const mobilePaths = [
-    /* 1. Top Left to Bottom Right diagonal - high arch */
-    "M-50,0 C100,100 200,400 500,900",
-    /* 2. Top Right to Center Left - swooping down */
-    "M500,0 C300,200 100,400 -50,600",
-    /* 3. Bottom Right to Top - subtle vertical */
-    "M400,900 C350,600 450,300 400,0",
-    /* 4. Horizontal bottom sweep */
-    "M-50,800 C150,700 300,850 500,750"
+    /* 1. Top Left to Bottom Right - Large Sinuous Wave */
+    "M-100,200 C150,300 350,500 600,800",
+
+    /* 2. Top Right to Bottom Left - Loop de Loop */
+    "M600,100 C400,200 200,400 300,500 C400,600 200,700 -100,600",
+
+    /* 3. Bottom Left to Top Right - Gentle Curve */
+    "M-100,700 C100,600 300,300 500,100",
+
+    /* 4. Bottom Right to Top Left - Complex Loop */
+    "M500,800 C400,600 200,400 300,300 C400,200 100,200 -100,100"
   ];
 
   return (
@@ -258,7 +261,7 @@ const Hero = () => {
           className="flex justify-center"
         >
           <Magnetic>
-            <a href="#pillars" className="px-10 py-5 rounded-full gradient-bg text-white hover:scale-105 transition-transform duration-300 flex items-center gap-2 font-semibold shadow-2xl shadow-indigo-500/20 border border-white/10">
+            <a href="#pillars" className="px-10 py-5 rounded-full shimmer-btn text-white hover:scale-105 transition-transform duration-300 flex items-center gap-2 font-semibold shadow-2xl shadow-indigo-500/20 border border-white/10">
               See how Angel works
               <ArrowRight className="w-5 h-5 text-white" />
             </a>

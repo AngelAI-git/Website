@@ -147,26 +147,45 @@ const OrganicWave = ({
 
 const BackgroundWaves = () => {
   // Sinuous waves and loops paths - created to look organic and flowy
-  const paths = [
-    // Large sine wave across screen
+  /* Desktop Paths: Organic, flowing, centralized */
+  const desktopPaths = [
     "M-100,400 C300,200 600,600 1540,400",
-    // Looping wave from top left
     "M-100,100 C300,100 400,300 300,400 C200,500 400,600 800,800",
-    // Loop de loop in center
     "M0,400 C400,400 600,200 720,400 C840,600 600,600 720,400 C840,200 1100,400 1540,400",
-    // Vertical sinuous wave
     "M720,-100 C600,300 840,500 720,900",
-    // Chaos loop
     "M1540,200 C1200,200 1000,500 800,300 C600,100 400,400 -100,300"
+  ];
+
+  /* Mobile Paths: Dispersed, coming from corners, avoiding center congestion */
+  const mobilePaths = [
+    /* 1. Top Left to Bottom Right diagonal - high arch */
+    "M-50,0 C100,100 200,400 500,900",
+    /* 2. Top Right to Center Left - swooping down */
+    "M500,0 C300,200 100,400 -50,600",
+    /* 3. Bottom Right to Top - subtle vertical */
+    "M400,900 C350,600 450,300 400,0",
+    /* 4. Horizontal bottom sweep */
+    "M-50,800 C150,700 300,850 500,750"
   ];
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      <OrganicWave path={paths[0]} delay={0} duration={8} color="#818cf8" width={6} opacity={0.3} />
-      <OrganicWave path={paths[1]} delay={3} duration={10} color="#a855f7" width={3} opacity={0.5} />
-      <OrganicWave path={paths[2]} delay={6} duration={12} color="#6366f1" width={8} opacity={0.2} />
-      <OrganicWave path={paths[3]} delay={1} duration={7} color="#c084fc" width={5} opacity={0.4} />
-      <OrganicWave path={paths[4]} delay={9} duration={11} color="#818cf8" width={4} opacity={0.3} />
+      {/* Desktop Waves - Hidden on Mobile */}
+      <div className="hidden md:block w-full h-full absolute inset-0">
+        <OrganicWave path={desktopPaths[0]} delay={0} duration={8} color="#818cf8" width={6} opacity={0.3} />
+        <OrganicWave path={desktopPaths[1]} delay={3} duration={10} color="#a855f7" width={3} opacity={0.5} />
+        <OrganicWave path={desktopPaths[2]} delay={6} duration={12} color="#6366f1" width={8} opacity={0.2} />
+        <OrganicWave path={desktopPaths[3]} delay={1} duration={7} color="#c084fc" width={5} opacity={0.4} />
+        <OrganicWave path={desktopPaths[4]} delay={9} duration={11} color="#818cf8" width={4} opacity={0.3} />
+      </div>
+
+      {/* Mobile Waves - Hidden on Desktop */}
+      <div className="block md:hidden w-full h-full absolute inset-0">
+        <OrganicWave path={mobilePaths[0]} delay={0} duration={9} color="#818cf8" width={4} opacity={0.3} />
+        <OrganicWave path={mobilePaths[1]} delay={2} duration={11} color="#a855f7" width={3} opacity={0.4} />
+        <OrganicWave path={mobilePaths[2]} delay={5} duration={13} color="#6366f1" width={5} opacity={0.2} />
+        <OrganicWave path={mobilePaths[3]} delay={1} duration={8} color="#c084fc" width={3} opacity={0.3} />
+      </div>
     </div>
   );
 };
@@ -209,7 +228,7 @@ const Hero = () => {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-[9vw] leading-tight font-bold tracking-tighter pb-2"
           >
-            Changing
+            Bridging
           </motion.h1>
         </div>
         <div className="overflow-hidden mb-8">
@@ -239,9 +258,9 @@ const Hero = () => {
           className="flex justify-center"
         >
           <Magnetic>
-            <a href="#pillars" className="px-10 py-5 rounded-full bg-white text-black hover:scale-105 transition-transform duration-300 flex items-center gap-2 font-semibold shadow-2xl shadow-indigo-500/20">
+            <a href="#pillars" className="px-10 py-5 rounded-full gradient-bg text-white hover:scale-105 transition-transform duration-300 flex items-center gap-2 font-semibold shadow-2xl shadow-indigo-500/20 border border-white/10">
               See how Angel works
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5 text-white" />
             </a>
           </Magnetic>
         </motion.div>

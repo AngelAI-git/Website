@@ -156,35 +156,14 @@ const BackgroundWaves = () => {
     "M1540,200 C1200,200 1000,500 800,300 C600,100 400,400 -100,300"
   ];
 
-  /* Mobile Paths: Long, elongated sine waves strictly along the edges */
-  const mobilePaths = [
-    /* 1. Top Edge - Long sine wave stretching across top */
-    "M-200,80 C300,180 800,-20 1600,80",
-    /* 2. Bottom Edge - Long sine wave stretching across bottom */
-    "M-200,720 C600,620 1100,820 1600,720",
-    /* 3. Left Edge - Vertical wave running down the side */
-    "M60,-100 C160,300 -40,500 60,900",
-    /* 4. Right Edge - Vertical wave running down the side */
-    "M1380,-100 C1280,300 1480,500 1380,900"
-  ];
-
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      {/* Desktop Waves - Hidden on Mobile */}
-      <div className="hidden md:block w-full h-full absolute inset-0">
+      <div className="w-full h-full absolute inset-0">
         <OrganicWave path={desktopPaths[0]} delay={0} duration={8} color="#818cf8" width={6} opacity={0.3} />
         <OrganicWave path={desktopPaths[1]} delay={3} duration={10} color="#a855f7" width={3} opacity={0.5} />
         <OrganicWave path={desktopPaths[2]} delay={6} duration={12} color="#6366f1" width={8} opacity={0.2} />
         <OrganicWave path={desktopPaths[3]} delay={1} duration={7} color="#c084fc" width={5} opacity={0.4} />
         <OrganicWave path={desktopPaths[4]} delay={9} duration={11} color="#818cf8" width={4} opacity={0.3} />
-      </div>
-
-      {/* Mobile Waves - Hidden on Desktop */}
-      <div className="block md:hidden w-full h-full absolute inset-0">
-        <OrganicWave path={mobilePaths[0]} delay={0} duration={12} color="#818cf8" width={3} opacity={0.3} />
-        <OrganicWave path={mobilePaths[1]} delay={2} duration={14} color="#a855f7" width={3} opacity={0.3} />
-        <OrganicWave path={mobilePaths[2]} delay={4} duration={16} color="#6366f1" width={3} opacity={0.2} />
-        <OrganicWave path={mobilePaths[3]} delay={1} duration={10} color="#c084fc" width={3} opacity={0.3} />
       </div>
     </div>
   );

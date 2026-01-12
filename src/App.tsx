@@ -66,6 +66,8 @@ const SpotlightCard = ({ children, className = "" }: { children: React.ReactNode
         style={{
           opacity: isHovered ? 1 : 0,
           background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(99, 102, 241, 0.15), transparent 40%)`,
+          willChange: 'background, opacity',
+          transform: 'translateZ(0)'
         }}
       />
       <div className="relative z-10">{children}</div>
@@ -115,6 +117,7 @@ const OrganicWave = ({
           delay: delay,
           repeatDelay: Math.random() * 5
         }}
+        style={{ willChange: 'pathLength, pathOffset, opacity' }}
       />
       {/* Glow effect */}
       <motion.path
@@ -136,7 +139,7 @@ const OrganicWave = ({
           delay: delay,
           repeatDelay: Math.random() * 5
         }}
-        style={{ filter: "blur(10px)" }}
+        style={{ filter: "blur(5px)", willChange: 'pathLength, pathOffset, opacity' }}
       />
     </motion.svg>
   );
@@ -206,7 +209,7 @@ const Hero = () => {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="text-[9vw] leading-tight font-bold tracking-tighter pb-2"
           >
-            Bridging
+            Changing
           </motion.h1>
         </div>
         <div className="overflow-hidden mb-8">
@@ -252,8 +255,9 @@ const Hero = () => {
             y: [0, -50, 50, 0],
             scale: [1, 1.2, 0.9, 1]
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/30 blur-[120px] rounded-full"
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-indigo-600/20 blur-[80px] rounded-full"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         />
         <motion.div
           animate={{
@@ -261,8 +265,9 @@ const Hero = () => {
             y: [0, 50, -50, 0],
             scale: [1, 1.1, 1.3, 1]
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/30 blur-[120px] rounded-full"
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-600/20 blur-[80px] rounded-full"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         />
       </div>
     </header>
@@ -595,8 +600,9 @@ export default function App() {
             scale: [1, 1.1, 0.9, 1],
             opacity: [0.3, 0.5, 0.35, 0.3],
           }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-[10%] -right-[5%] w-[800px] h-[800px] bg-indigo-900/20 blur-[150px] rounded-full"
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-[10%] -right-[5%] w-[800px] h-[800px] bg-indigo-900/15 blur-[100px] rounded-full"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         />
         <motion.div
           animate={{
@@ -605,8 +611,9 @@ export default function App() {
             scale: [1, 0.9, 1.2, 1],
             opacity: [0.2, 0.4, 0.25, 0.2],
           }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -bottom-[10%] -left-[5%] w-[900px] h-[900px] bg-purple-900/20 blur-[150px] rounded-full"
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -bottom-[10%] -left-[5%] w-[900px] h-[900px] bg-purple-900/15 blur-[100px] rounded-full"
+          style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         />
       </div>
 

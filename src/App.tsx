@@ -156,16 +156,16 @@ const BackgroundWaves = () => {
     "M1540,200 C1200,200 1000,500 800,300 C600,100 400,400 -100,300"
   ];
 
-  /* Mobile Paths: Simple, separated sine waves/loops from edges */
+  /* Mobile Paths: Long, elongated sine waves strictly along the edges */
   const mobilePaths = [
-    /* 1. Top Wave - Gentle sine at huge scale */
-    "M-100,100 Q400,300 900,100",
-    /* 2. Bottom Wave - Gentle sine inverted */
-    "M-100,800 Q400,600 900,800",
-    /* 3. Left Loop - Coming effectively from offscreen left */
-    "M-50,200 C100,200 100,600 -50,600",
-    /* 4. Right Loop - Coming effectively from offscreen right */
-    "M850,300 C700,300 700,500 850,500"
+    /* 1. Top Edge - Long sine wave stretching across top */
+    "M-200,80 C300,180 800,-20 1600,80",
+    /* 2. Bottom Edge - Long sine wave stretching across bottom */
+    "M-200,720 C600,620 1100,820 1600,720",
+    /* 3. Left Edge - Vertical wave running down the side */
+    "M60,-100 C160,300 -40,500 60,900",
+    /* 4. Right Edge - Vertical wave running down the side */
+    "M1380,-100 C1280,300 1480,500 1380,900"
   ];
 
   return (

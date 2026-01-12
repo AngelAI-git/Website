@@ -156,19 +156,16 @@ const BackgroundWaves = () => {
     "M1540,200 C1200,200 1000,500 800,300 C600,100 400,400 -100,300"
   ];
 
-  /* Mobile Paths: Dispersed, sinus & loops only, multi-directional */
+  /* Mobile Paths: Simple, separated sine waves/loops from edges */
   const mobilePaths = [
-    /* 1. Top Left to Bottom Right - Large Sinuous Wave */
-    "M-100,200 C150,300 350,500 600,800",
-
-    /* 2. Top Right to Bottom Left - Loop de Loop */
-    "M600,100 C400,200 200,400 300,500 C400,600 200,700 -100,600",
-
-    /* 3. Bottom Left to Top Right - Gentle Curve */
-    "M-100,700 C100,600 300,300 500,100",
-
-    /* 4. Bottom Right to Top Left - Complex Loop */
-    "M500,800 C400,600 200,400 300,300 C400,200 100,200 -100,100"
+    /* 1. Top Wave - Gentle sine at huge scale */
+    "M-100,100 Q400,300 900,100",
+    /* 2. Bottom Wave - Gentle sine inverted */
+    "M-100,800 Q400,600 900,800",
+    /* 3. Left Loop - Coming effectively from offscreen left */
+    "M-50,200 C100,200 100,600 -50,600",
+    /* 4. Right Loop - Coming effectively from offscreen right */
+    "M850,300 C700,300 700,500 850,500"
   ];
 
   return (
@@ -184,10 +181,10 @@ const BackgroundWaves = () => {
 
       {/* Mobile Waves - Hidden on Desktop */}
       <div className="block md:hidden w-full h-full absolute inset-0">
-        <OrganicWave path={mobilePaths[0]} delay={0} duration={9} color="#818cf8" width={4} opacity={0.3} />
-        <OrganicWave path={mobilePaths[1]} delay={2} duration={11} color="#a855f7" width={3} opacity={0.4} />
-        <OrganicWave path={mobilePaths[2]} delay={5} duration={13} color="#6366f1" width={5} opacity={0.2} />
-        <OrganicWave path={mobilePaths[3]} delay={1} duration={8} color="#c084fc" width={3} opacity={0.3} />
+        <OrganicWave path={mobilePaths[0]} delay={0} duration={12} color="#818cf8" width={3} opacity={0.3} />
+        <OrganicWave path={mobilePaths[1]} delay={2} duration={14} color="#a855f7" width={3} opacity={0.3} />
+        <OrganicWave path={mobilePaths[2]} delay={4} duration={16} color="#6366f1" width={3} opacity={0.2} />
+        <OrganicWave path={mobilePaths[3]} delay={1} duration={10} color="#c084fc" width={3} opacity={0.3} />
       </div>
     </div>
   );
@@ -261,7 +258,7 @@ const Hero = () => {
           className="flex justify-center"
         >
           <Magnetic>
-            <a href="#pillars" className="px-10 py-5 rounded-full shimmer-btn text-white hover:scale-105 transition-transform duration-300 flex items-center gap-2 font-semibold shadow-2xl shadow-indigo-500/20 border border-white/10">
+            <a href="#pillars" className="px-10 py-5 rounded-full static-gradient-glow text-white hover:scale-105 transition-transform duration-300 flex items-center gap-2 font-semibold border border-white/10">
               See how Angel works
               <ArrowRight className="w-5 h-5 text-white" />
             </a>

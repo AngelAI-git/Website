@@ -7,7 +7,9 @@ export default function Footer() {
         <img src={logo} alt="Angel AI" className="logo-glow" style={{ height: 22, width: 'auto' }} />
         <span className="footer__meta">the governance layer for human-led ai</span>
       </div>
-      <div className="footer__meta">© 2026 angel.ai · theangelway.ai</div>
+      <div className="footer__meta">
+        © 2026 angel.ai · <a href="mailto:info@theangelway.ai" style={{ color: 'inherit', textDecoration: 'none' }}>theangelway.ai</a>
+      </div>
     </footer>
   );
 }

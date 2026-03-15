@@ -6,7 +6,7 @@ export default function CTA() {
       <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <SectionLabel className="reveal" style={{ marginBottom: 'var(--space-8)' }}>Say Hello</SectionLabel>
         
-        <div className="contact-card glass-card reveal" style={{ maxWidth: '900px', width: '100%', padding: 'var(--space-24) var(--space-12) var(--space-16)', textAlign: 'center', position: 'relative', zIndex: 10 }}>
+        <div className="contact-card glass-card reveal" style={{ width: '100%', position: 'relative', zIndex: 10 }}>
           <h2 className="feature__title reveal reveal--delay-1" style={{ marginBottom: 'var(--space-8)', marginTop: 'var(--space-6)' }}>We're Selectively Sharing Early Conversations</h2>
 
 

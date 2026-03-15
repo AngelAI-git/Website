@@ -1143,9 +1143,9 @@
   }
 
   .contact-card {
-    max-width: 720px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: var(--space-7) var(--space-6);
+    padding: var(--space-8) var(--space-6);
     border-radius: var(--radius-6);
     border: 1px solid var(--color-violet-20);
     background: var(--grad-glass);
@@ -1832,6 +1832,10 @@
     .footer {
       flex-direction: column;
       text-align: center;
+    }
+
+    .contact-card {
+      padding: var(--space-6) var(--space-4);
     }
 
     .values-grid {

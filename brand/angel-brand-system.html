@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>angel.ai — Brand Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0A0A12; --bg2: #121021; --bg3: #16132a;
+    --v: #9B6AFF; --lav: #eadcf8; --pk: #FF6BD6; --mp: #B482FF;
+    --tp: #f0ecff; --ts: #a89dc4; --tm: #5a5272;
+    --br: rgba(155,106,255,0.13);
+    --g1: linear-gradient(135deg,#9B6AFF,#FF6BD6);
+    --ring-g: linear-gradient(135deg,#7B4FFF,#CC44EE,#FF55BB);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{font-size:15px;scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--tp);font-family:'Poppins',sans-serif;line-height:1.7;}
+  ::-webkit-scrollbar{width:3px;}
+  ::-webkit-scrollbar-thumb{background:var(--v);border-radius:2px;}
+
+  /* ── COVER ── */
+  .cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;
+    background:radial-gradient(ellipse at 25% 35%,rgba(155,106,255,0.13) 0%,transparent 52%),
+               radial-gradient(ellipse at 75% 65%,rgba(255,107,214,0.08) 0%,transparent 52%),#0A0A12;
+    position:relative;overflow:hidden;}
+  .cover::before{content:'';position:absolute;inset:0;
+    background-image:radial-gradient(circle,rgba(155,106,255,0.07) 1px,transparent 1px);
+    background-size:52px 52px;pointer-events:none;}
+  .cover-logo{position:relative;z-index:1;margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:16px;
+    filter:drop-shadow(0 0 20px rgba(155,106,255,0.3));}
+  .cover h1{font-size:clamp(3rem,7vw,5rem);font-weight:800;letter-spacing:-0.04em;color:#fff;line-height:1;position:relative;z-index:1;margin-bottom:16px;}
+  .gbar{height:1.5px;width:56px;background:linear-gradient(90deg,#9B6AFF,#FF6BD6);border-radius:1px;margin:0 auto 18px;position:relative;z-index:1;}
+  .cover-sub{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--v);text-transform:uppercase;margin-bottom:14px;position:relative;z-index:1;}
+  .cover-desc{font-size:0.9rem;color:var(--ts);max-width:440px;margin:0 auto 32px;position:relative;z-index:1;line-height:1.78;}
+  .cover-meta{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--tm);letter-spacing:0.1em;position:relative;z-index:1;}
+
+  /* ── LAYOUT ── */
+  .doc{max-width:960px;margin:0 auto;padding:80px 48px;}
+  .s{margin-bottom:80px;}
+  .sn{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:var(--v);text-transform:uppercase;margin-bottom:4px;}
+  .s h2{font-size:clamp(1.5rem,2.5vw,1.9rem);font-weight:700;letter-spacing:-0.03em;color:var(--tp);margin-bottom:8px;line-height:1.2;}
+  .si{color:var(--ts);font-size:0.87rem;max-width:640px;margin-bottom:32px;line-height:1.8;}
+  .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(155,106,255,0.22),rgba(255,107,214,0.14),transparent);margin:68px 0;}
+
+  /* ── CARDS ── */
+  .c{padding:20px 24px;border-radius:13px;border:1px solid var(--br);background:rgba(18,16,33,0.7);}
+  .cl{font-family:'DM Mono',monospace;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--tm);margin-bottom:13px;}
+
+  /* ── GRIDS ── */
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+
+  /* ── SWATCHES ── */
+  .sw{border-radius:11px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);}
+  .swp{height:68px;}
+  .swi{padding:9px 12px;background:rgba(255,255,255,0.02);}
+  .swn{font-size:0.73rem;font-weight:600;color:var(--tp);}
+  .swh{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--tm);margin-top:1px;}
+  .swr{font-size:0.58rem;color:var(--tm);margin-top:2px;}
+
+  /* ── TYPE ── */
+  .tr{padding:15px 20px;border-radius:10px;border:1px solid var(--br);background:rgba(155,106,255,0.02);display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:8px;}
+  .trs{flex:1;min-width:0;overflow:hidden;}
+  .trm{flex-shrink:0;text-align:right;}
+  .trmn{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--v);}
+  .trmv{font-family:'DM Mono',monospace;font-size:0.57rem;color:var(--tm);margin-top:2px;}
+
+  /* ── TABLE ── */
+  table{width:100%;border-collapse:collapse;}
+  th{font-family:'DM Mono',monospace;font-size:0.57rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--tm);text-align:left;padding:7px 12px;border-bottom:1px solid var(--br);}
+  td{padding:9px 12px;font-size:0.78rem;color:var(--ts);border-bottom:1px solid rgba(155,106,255,0.05);vertical-align:middle;}
+  td:first-child{font-family:'DM Mono',monospace;color:var(--v);font-size:0.68rem;}
+  .spb{display:inline-block;height:4px;background:linear-gradient(90deg,#9B6AFF,#FF6BD6);border-radius:2px;opacity:0.5;}
+
+  /* ── COMPONENTS ── */
+  .bp{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;background:linear-gradient(135deg,#9B6AFF,#FF6BD6);color:white;font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:600;border:none;cursor:default;}
+  .bs{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;background:transparent;color:var(--lav);font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:500;border:1px solid rgba(155,106,255,0.24);cursor:default;}
+  .bg_{display:inline-flex;align-items:center;gap:7px;padding:9px 20px;border-radius:8px;background:rgba(155,106,255,0.08);color:var(--v);font-family:'Poppins',sans-serif;font-size:0.8rem;font-weight:500;border:1px solid rgba(155,106,255,0.18);cursor:default;}
+  .bdv{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:100px;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(155,106,255,0.25);background:rgba(155,106,255,0.07);color:var(--v);width:fit-content;}
+  .bdp{border-color:rgba(255,107,214,0.25)!important;background:rgba(255,107,214,0.07)!important;color:var(--pk)!important;}
+  .bdm{border-color:rgba(180,130,255,0.25)!important;background:rgba(180,130,255,0.07)!important;color:var(--mp)!important;}
+  .dot{width:5px;height:5px;border-radius:50%;background:currentColor;display:inline-block;}
+  .gc{padding:13px;border-radius:10px;border:1px solid var(--br);background:rgba(155,106,255,0.04);position:relative;overflow:hidden;}
+  .gc::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--g1);opacity:0.5;}
+  .gct{font-size:0.78rem;font-weight:600;color:var(--tp);margin-bottom:3px;}
+  .gcb{font-size:0.68rem;color:var(--tm);line-height:1.5;}
+  .inp_{padding:9px 13px;border-radius:8px;background:rgba(255,255,255,0.022);border:1px solid var(--br);color:var(--ts);font-family:'Poppins',sans-serif;font-size:0.77rem;outline:none;width:100%;}
+
+  /* ── LAYERS ── */
+  .layer{padding:10px 13px;border-radius:8px;border:1px solid transparent;display:flex;align-items:center;justify-content:space-between;font-size:0.76rem;font-weight:600;color:var(--tp);border-left-width:3px;margin-bottom:5px;}
+  .lm_{font-family:'DM Mono',monospace;font-size:0.56rem;padding:2px 7px;border-radius:100px;}
+
+  /* ── LOGO TILES ── */
+  .lgt{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:16px;}
+  .lt{padding:28px 18px;border-radius:13px;border:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+  .ltl{font-family:'DM Mono',monospace;font-size:0.57rem;color:rgba(255,255,255,0.28);text-transform:uppercase;letter-spacing:0.1em;}
+  .lk{display:inline-flex;align-items:center;gap:9px;}
+  .wm{font-family:'Poppins',sans-serif;font-weight:700;letter-spacing:-0.02em;color:white;}
+
+  /* ── TONE ── */
+  .tn{padding:19px 21px;border-radius:12px;border:1px solid var(--br);background:rgba(18,16,33,0.6);}
+  .tn h4{font-size:0.84rem;font-weight:600;margin-bottom:10px;}
+  .tn ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+  .tn li{font-size:0.75rem;color:var(--ts);display:flex;gap:7px;}
+  .tn li::before{content:'—';flex-shrink:0;}
+  .do{border-color:rgba(155,106,255,0.2);} .do h4{color:var(--v);} .do li::before{color:var(--v);}
+  .dont{border-color:rgba(255,107,214,0.14);} .dont h4{color:var(--pk);} .dont li::before{color:var(--pk);}
+
+  /* ── TOKENS ── */
+  .tkr{display:flex;align-items:center;gap:13px;padding:8px 12px;border-radius:7px;border:1px solid rgba(155,106,255,0.07);background:rgba(255,255,255,0.008);margin-bottom:5px;}
+  .tkk{font-family:'DM Mono',monospace;font-size:0.64rem;color:var(--v);min-width:150px;}
+  .tkv{font-family:'DM Mono',monospace;font-size:0.64rem;color:var(--ts);min-width:155px;}
+  .tkd{font-size:0.72rem;color:var(--tm);}
+
+  /* ── ICON GRID ── */
+  .igd{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;}
+  .ii{aspect-ratio:1;border-radius:10px;border:1px solid var(--br);background:rgba(155,106,255,0.03);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px 5px;text-align:center;transition:border-color .2s,background .2s;cursor:default;}
+  .ii:hover{border-color:rgba(155,106,255,0.3);background:rgba(155,106,255,0.07);}
+  .in{font-family:'DM Mono',monospace;font-size:0.52rem;color:var(--tm);text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* ── INFO BOX ── */
+  .ib{padding:15px 19px;border-radius:10px;border:1px solid rgba(155,106,255,0.14);background:rgba(155,106,255,0.04);}
+  .ibw{border-color:rgba(255,107,214,0.14)!important;background:rgba(255,107,214,0.03)!important;}
+  .ib p{font-size:0.76rem;color:var(--ts);margin-bottom:4px;display:flex;gap:7px;line-height:1.5;}
+  .ib p:last-child{margin-bottom:0;}
+  .ib p::before{content:'→';flex-shrink:0;color:var(--v);}
+  .ibw p::before{color:var(--pk)!important;}
+  .ibl{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--v);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:9px;}
+  .ibwl{color:var(--pk)!important;}
+
+  /* ── PROTOCOL ── */
+  .prot{display:flex;flex-direction:column;gap:0;max-width:860px;margin-top:40px;}
+  .pstep{display:grid;grid-template-columns:68px 1fr;gap:20px;align-items:stretch;padding:24px 0;border-bottom:1px solid rgba(155,106,255,0.08);cursor:default;transition:all .25s;}
+  .pstep:first-child{border-top:1px solid rgba(155,106,255,0.08);}
+  .pstep:hover{background:rgba(155,106,255,0.025);border-radius:12px;padding:24px 16px;margin:0 -16px;}
+  .psl{display:flex;flex-direction:column;align-items:center;gap:0;}
+  .psc{width:68px;height:68px;border-radius:50%;border:2px solid rgba(155,106,255,0.22);background:rgba(18,16,33,0.95);display:flex;align-items:center;justify-content:center;transition:all .3s;position:relative;z-index:1;}
+  .pstep:hover .psc{border-color:var(--v);box-shadow:0 0 24px rgba(155,106,255,0.28);}
+  .psltr{font-family:'Poppins',sans-serif;font-size:1.3rem;font-weight:800;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .psline{flex:1;width:2px;background:linear-gradient(180deg,rgba(155,106,255,0.25),rgba(255,107,214,0.12));border-radius:1px;margin-top:7px;min-height:16px;}
+  .pstep:last-child .psline{display:none;}
+  .psr{padding:2px 0 20px;display:flex;flex-direction:column;justify-content:center;}
+  .pslbl{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tm);margin-bottom:5px;}
+  .psti{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-0.02em;color:var(--tp);margin-bottom:7px;}
+  .psti .vb{background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .psde{font-size:0.86rem;color:var(--ts);line-height:1.7;max-width:640px;}
+  .pstag{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:3px 10px;border-radius:100px;background:rgba(155,106,255,0.07);border:1px solid rgba(155,106,255,0.15);font-family:'DM Mono',monospace;font-size:0.57rem;letter-spacing:0.09em;color:var(--v);width:fit-content;}
+  .pstag::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--v);}
+
+  /* ── FORMULA ── */
+  .formula{margin-top:40px;padding:24px 28px;border-radius:14px;background:linear-gradient(135deg,rgba(155,106,255,0.07),rgba(255,107,214,0.04));border:1px solid rgba(155,106,255,0.18);position:relative;overflow:hidden;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .formula::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--g1);opacity:0.6;}
+  .flbl{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tm);flex-shrink:0;white-space:nowrap;}
+  .feq{display:flex;align-items:center;gap:12px;flex-wrap:wrap;flex:1;}
+  .fbrand{font-family:'Poppins',sans-serif;font-size:0.95rem;font-weight:700;background:var(--g1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;}
+  .fop{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:300;color:var(--tm);}
+  .ft1{padding:5px 12px;border-radius:7px;font-family:'Poppins',sans-serif;font-size:0.78rem;font-weight:600;white-space:nowrap;background:rgba(155,106,255,0.1);border:1px solid rgba(155,106,255,0.22);color:var(--lav);}
+  .ft2{padding:5px 12px;border-radius:7px;font-family:'Poppins',sans-serif;font-size:0.78rem;font-weight:600;white-space:nowrap;background:rgba(180,130,255,0.1);border:1px solid rgba(180,130,255,0.22);color:var(--mp);}
+  .ft3{padding:5px 12px;border-radius:7px;font-family:'Poppins',sans-serif;font-size:0.78rem;font-weight:600;white-space:nowrap;background:rgba(255,107,214,0.08);border:1px solid rgba(255,107,214,0.2);color:var(--pk);}
+
+  /* ── PROMPT BOX ── */
+  .pb{background:#06060f;border:1px solid var(--br);border-radius:15px;padding:32px 36px;position:relative;overflow:hidden;}
+  .pb::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--g1);}
+  .pb pre{font-family:'DM Mono',monospace;font-size:0.73rem;line-height:1.95;color:var(--ts);white-space:pre-wrap;word-break:break-word;}
+  .pk2{color:var(--v);} .pv2{color:var(--lav);} .pc2{color:var(--tm);} .pp2{color:var(--pk);}
+
+  /* ── DOC FOOTER ── */
+  .df{max-width:960px;margin:0 auto;padding:24px 48px;border-top:1px solid rgba(155,106,255,0.08);display:flex;justify-content:space-between;align-items:center;}
+  .df div{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--tm);}
+
+  @media(max-width:700px){
+    .doc{padding:44px 22px;}
+    .g2,.g3,.g4{grid-template-columns:1fr 1fr;}
+    .lgt{grid-template-columns:1fr 1fr;}
+    .igd{grid-template-columns:repeat(4,1fr);}
+    .df{flex-direction:column;gap:8px;text-align:center;}
+    .pstep{grid-template-columns:54px 1fr;gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-logo">
+    <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+      <defs>
+        <linearGradient id="coverRing" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7B4FFF"/>
+          <stop offset="50%" stop-color="#CC44EE"/>
+          <stop offset="100%" stop-color="#FF55BB"/>
+        </linearGradient>
+      </defs>
+      <circle cx="36" cy="36" r="25" fill="none" stroke="url(#coverRing)" stroke-width="9"/>
+    </svg>
+  </div>
+  <h1>angel.ai</h1>
+  <div class="gbar"></div>
+  <div class="cover-sub">Brand Design System · v1.0</div>
+  <p class="cover-desc">Complete visual identity, design language, and creative direction for angel.ai — the governance layer for human-led AI execution.</p>
+  <div class="cover-meta">Confidential · Stealth Mode · theangelway.ai</div>
+</div>
+
+<div class="doc">
+
+<!-- §01 BRAND ESSENCE -->
+<div class="s">
+  <div class="sn">§ 01 · Brand Essence</div>
+  <h2>What angel.ai Stands For</h2>
+  <p class="si">Every visual and verbal decision reinforces one core truth: human intent is sacred. The design language communicates precision, trust, and calm authority — never noise, never hype.</p>
+  <div class="g3" style="margin-bottom:16px;">
+    <div class="c"><div class="cl">The Feeling</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Calm confidence</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Intellectual depth</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Precision engineering</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Quiet authority</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Future-focused</li>
+      </ul>
+    </div>
+    <div class="c"><div class="cl">The Promise</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Verified intelligence</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Zero hallucination</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>IP sovereignty</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Traceable outputs</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Human-first, always</li>
+      </ul>
+    </div>
+    <div class="c"><div class="cl">Key Analogies</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Stripe for knowledge</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Constitution for AI</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Nutrition label for content</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Governance layer</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Architecture of Trust</li>
+      </ul>
+    </div>
+  </div>
+  <div class="c" style="display:flex;flex-direction:column;gap:9px;">
+    <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;">Tagline</span><span style="font-size:.92rem;font-weight:600;color:var(--tp);">The Governance Layer for Human-Led AI Execution</span></div>
+    <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;">One-liner</span><span style="font-size:.8rem;color:var(--ts);">We bridge the Action Gap — ensuring human intent always precedes machine generation.</span></div>
+    <div style="display:flex;gap:14px;align-items:baseline;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;">Comparables</span><span style="font-size:.77rem;color:var(--tm);">Stripe · Linear · Vercel · Anthropic — but darker, more architectural, more sovereign</span></div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §02 LOGO -->
+<div class="s">
+  <div class="sn">§ 02 · Logo &amp; Identity Mark</div>
+  <h2>Logo System</h2>
+  <p class="si">The logo ring uses the brand gradient (<code style="font-family:'DM Mono',monospace;font-size:.82em;color:var(--v);">#7B4FFF → #CC44EE → #FF55BB</code>). The wordmark is always pure white <code style="font-family:'DM Mono',monospace;font-size:.82em;color:var(--v);">#FFFFFF</code>. Never apply any other color to either element.</p>
+
+  <div class="lgt">
+    <div class="lt" style="background:#0A0A12;">
+      <div class="lk">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <defs><linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B4FFF"/><stop offset="50%" stop-color="#CC44EE"/><stop offset="100%" stop-color="#FF55BB"/></linearGradient></defs>
+          <circle cx="16" cy="16" r="11" fill="none" stroke="url(#r1)" stroke-width="4.5"/>
+        </svg>
+        <span class="wm" style="font-size:1.1rem;">angel.ai</span>
+      </div>
+      <div class="ltl">Full lockup · deep black</div>
+    </div>
+    <div class="lt" style="background:#121021;">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <defs><linearGradient id="r2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B4FFF"/><stop offset="50%" stop-color="#CC44EE"/><stop offset="100%" stop-color="#FF55BB"/></linearGradient></defs>
+        <circle cx="30" cy="30" r="21" fill="none" stroke="url(#r2)" stroke-width="7.5"/>
+      </svg>
+      <div class="ltl">Mark only · dark purple</div>
+    </div>
+    <div class="lt" style="background:#16132a;">
+      <span class="wm" style="font-size:1.6rem;">angel.ai</span>
+      <div class="ltl">Wordmark only</div>
+    </div>
+    <div class="lt" style="background:linear-gradient(135deg,#9B6AFF,#7B50DD);border-color:rgba(255,255,255,0.15);">
+      <div class="lk">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="9.5" fill="none" stroke="white" stroke-width="3.8"/>
+        </svg>
+        <span class="wm" style="font-size:1rem;">angel.ai</span>
+      </div>
+      <div class="ltl" style="color:rgba(255,255,255,0.5);">On violet bg — white ring</div>
+    </div>
+    <div class="lt" style="background:linear-gradient(135deg,#9B6AFF,#FF6BD6);border-color:rgba(255,255,255,0.15);">
+      <div class="lk">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="9.5" fill="none" stroke="white" stroke-width="3.8"/>
+        </svg>
+        <span class="wm" style="font-size:1rem;">angel.ai</span>
+      </div>
+      <div class="ltl" style="color:rgba(255,255,255,0.5);">On gradient bg — white ring</div>
+    </div>
+    <div class="lt" style="background:#0A0A12;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <defs><linearGradient id="r3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B4FFF"/><stop offset="50%" stop-color="#CC44EE"/><stop offset="100%" stop-color="#FF55BB"/></linearGradient></defs>
+          <circle cx="22" cy="22" r="15" fill="none" stroke="url(#r3)" stroke-width="5.5"/>
+        </svg>
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <defs><linearGradient id="r4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B4FFF"/><stop offset="100%" stop-color="#FF55BB"/></linearGradient></defs>
+          <circle cx="13" cy="13" r="8.5" fill="none" stroke="url(#r4)" stroke-width="3.5"/>
+        </svg>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <defs><linearGradient id="r5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B4FFF"/><stop offset="100%" stop-color="#FF55BB"/></linearGradient></defs>
+          <circle cx="9" cy="9" r="6" fill="none" stroke="url(#r5)" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="ltl">Sizes: 44 · 26 · 18px</div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="ib">
+      <div class="ibl">Do ✓</div>
+      <p>Ring: gradient #7B4FFF → #CC44EE → #FF55BB at 135°</p>
+      <p>Wordmark: always white #FFFFFF, Poppins 700</p>
+      <p>Use on deep dark or gradient backgrounds only</p>
+      <p>On colored bg: switch ring to white stroke only</p>
+      <p>Minimum size: 18px ring diameter</p>
+      <p>Clear space: equal to ring diameter on all sides</p>
+    </div>
+    <div class="ib ibw">
+      <div class="ibl ibwl">Never ✗</div>
+      <p>Never apply violet/pink to the wordmark text</p>
+      <p>Never fill the ring — always hollow stroke only</p>
+      <p>Never use on white or light backgrounds</p>
+      <p>Never add glow or drop shadow to the mark</p>
+      <p>Never stretch, rotate, or alter proportions</p>
+      <p>Never use any color but white for the wordmark</p>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §03 COLOR -->
+<div class="s">
+  <div class="sn">§ 03 · Color System</div>
+  <h2>Dark-First Color Palette</h2>
+  <p class="si">Design starts from deep black. Violet is the primary brand accent. Pink is the secondary energy color. Gradients live on interactive UI elements, data flows, and dividers — never as full backgrounds, and never on the logo text.</p>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--tm);margin-bottom:12px;">Backgrounds</p>
+  <div class="g3" style="margin-bottom:22px;">
+    <div class="sw"><div class="swp" style="background:#0A0A12;"></div><div class="swi"><div class="swn">Deep Black</div><div class="swh">#0A0A12</div><div class="swr">Primary page background</div></div></div>
+    <div class="sw"><div class="swp" style="background:#121021;"></div><div class="swi"><div class="swn">Soft Dark Purple</div><div class="swh">#121021</div><div class="swr">Section backgrounds</div></div></div>
+    <div class="sw"><div class="swp" style="background:#16132a;"></div><div class="swi"><div class="swn">Dark Gradient Base</div><div class="swh">#16132a</div><div class="swr">Alternate section bg</div></div></div>
+  </div>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--tm);margin-bottom:12px;">Brand Ring Gradient</p>
+  <div class="g3" style="margin-bottom:22px;">
+    <div class="sw"><div class="swp" style="background:#7B4FFF;"></div><div class="swi"><div class="swn">Ring Start</div><div class="swh">#7B4FFF</div><div class="swr">Logo ring — 0% stop</div></div></div>
+    <div class="sw"><div class="swp" style="background:#CC44EE;"></div><div class="swi"><div class="swn">Ring Mid</div><div class="swh">#CC44EE</div><div class="swr">Logo ring — 50% stop</div></div></div>
+    <div class="sw"><div class="swp" style="background:#FF55BB;"></div><div class="swi"><div class="swn">Ring End</div><div class="swh">#FF55BB</div><div class="swr">Logo ring — 100% stop</div></div></div>
+  </div>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--tm);margin-bottom:12px;">UI Accent Colors</p>
+  <div class="g4" style="margin-bottom:22px;">
+    <div class="sw"><div class="swp" style="background:#9B6AFF;"></div><div class="swi"><div class="swn">Violet</div><div class="swh">#9B6AFF</div><div class="swr">Primary UI accent · CTAs</div></div></div>
+    <div class="sw"><div class="swp" style="background:#eadcf8;"></div><div class="swi"><div class="swn">Soft Lavender</div><div class="swh">#eadcf8</div><div class="swr">Text fills · Pastel</div></div></div>
+    <div class="sw"><div class="swp" style="background:#FF6BD6;"></div><div class="swi"><div class="swn">Pink</div><div class="swh">#FF6BD6</div><div class="swr">Secondary energy</div></div></div>
+    <div class="sw"><div class="swp" style="background:#B482FF;"></div><div class="swi"><div class="swn">Mid Purple</div><div class="swh">#B482FF</div><div class="swr">Layer accents</div></div></div>
+  </div>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--tm);margin-bottom:12px;">Text Hierarchy</p>
+  <div class="g3" style="margin-bottom:22px;">
+    <div class="sw"><div class="swp" style="background:#f0ecff;"></div><div class="swi"><div class="swn">Primary</div><div class="swh">#f0ecff</div><div class="swr">Headlines &amp; key text</div></div></div>
+    <div class="sw"><div class="swp" style="background:#a89dc4;"></div><div class="swi"><div class="swn">Secondary</div><div class="swh">#a89dc4</div><div class="swr">Body copy &amp; descriptions</div></div></div>
+    <div class="sw"><div class="swp" style="background:#5a5272;"></div><div class="swi"><div class="swn">Muted</div><div class="swh">#5a5272</div><div class="swr">Labels · Meta · Captions</div></div></div>
+  </div>
+
+  <p style="font-family:'DM Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--tm);margin-bottom:12px;">UI Gradients (never on logo text)</p>
+  <div class="g3">
+    <div class="sw"><div class="swp" style="background:linear-gradient(135deg,#9B6AFF,#FF6BD6);"></div><div class="swi"><div class="swn">Primary</div><div class="swh">#9B6AFF → #FF6BD6 · 135°</div><div class="swr">CTAs · borders · dividers</div></div></div>
+    <div class="sw"><div class="swp" style="background:linear-gradient(135deg,#6C63FF,#E08BFF);"></div><div class="swi"><div class="swn">Soft</div><div class="swh">#6C63FF → #E08BFF · 135°</div><div class="swr">Subtle fills</div></div></div>
+    <div class="sw"><div class="swp" style="background:linear-gradient(135deg,#9B6AFF,#eadcf8);"></div><div class="swi"><div class="swn">Pastel</div><div class="swh">#9B6AFF → #eadcf8 · 135°</div><div class="swr">Text fills · accents</div></div></div>
+    <div class="sw"><div class="swp" style="background:radial-gradient(circle,rgba(155,106,255,0.2),transparent);"></div><div class="swi"><div class="swn">Glow Orb</div><div class="swh">rgba(9B6AFF,0.18)→transparent</div><div class="swr">Background depth</div></div></div>
+    <div class="sw"><div class="swp" style="background:linear-gradient(90deg,transparent,rgba(155,106,255,0.4),rgba(255,107,214,0.3),transparent);"></div><div class="swi"><div class="swn">Divider</div><div class="swh">Transparent→V→P→Transparent</div><div class="swr">Section separators</div></div></div>
+    <div class="sw"><div class="swp" style="background:linear-gradient(135deg,rgba(155,106,255,0.07),rgba(255,107,214,0.03));"></div><div class="swi"><div class="swn">Glass Fill</div><div class="swh">rgba(V,0.07)→rgba(P,0.03)</div><div class="swr">Card &amp; panel backgrounds</div></div></div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §04 TYPOGRAPHY -->
+<div class="s">
+  <div class="sn">§ 04 · Typography</div>
+  <h2>Type System</h2>
+  <p class="si">Two typefaces only. Poppins for all display and body text. DM Mono for all technical, label, and metadata contexts. The contrast between geometric humanist and monospace is the typographic fingerprint of angel.ai.</p>
+
+  <div class="g2" style="margin-bottom:24px;">
+    <div class="c"><div class="cl">Poppins — Display &amp; Body</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>All headlines (800, 700, 600)</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>All body copy (400)</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Buttons &amp; navigation (600)</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Feature descriptions (400)</li>
+      </ul>
+    </div>
+    <div class="c"><div class="cl">DM Mono — Technical &amp; Labels</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;">
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Section labels &amp; eyebrows</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Badges &amp; status indicators</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>Architecture layer labels</li>
+        <li style="font-size:.76rem;color:var(--ts);display:flex;gap:7px;"><span style="color:var(--v)">—</span>NEXUS scores &amp; readouts</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tr"><div class="trs"><span style="font-size:2.6rem;font-weight:800;letter-spacing:-0.04em;color:var(--tp);line-height:1;">The Governance Layer</span></div><div class="trm"><div class="trmn">Hero Display</div><div class="trmv">Poppins 800 · 48–88px · -0.04em</div></div></div>
+  <div class="tr"><div class="trs"><span style="font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;color:var(--tp);">Human-Led AI Execution</span></div><div class="trm"><div class="trmn">Heading 1</div><div class="trmv">Poppins 700 · 32–40px · -0.03em</div></div></div>
+  <div class="tr"><div class="trs"><span style="font-size:1.25rem;font-weight:700;letter-spacing:-0.02em;color:var(--tp);">The Architecture of Trust</span></div><div class="trm"><div class="trmn">Heading 2</div><div class="trmv">Poppins 700 · 22–28px · -0.02em</div></div></div>
+  <div class="tr"><div class="trs"><span style="font-size:.98rem;font-weight:600;letter-spacing:-0.01em;color:var(--tp);">Angel Spark Method</span></div><div class="trm"><div class="trmn">Heading 3</div><div class="trmv">Poppins 600 · 17–20px · -0.01em</div></div></div>
+  <div class="tr"><div class="trs"><span style="font-size:.93rem;font-weight:400;color:var(--ts);">We bridge the Action Gap — ensuring that human intent always precedes machine generation, protecting elite expertise from digital noise.</span></div><div class="trm"><div class="trmn">Body</div><div class="trmv">Poppins 400 · 15–16px · lh 1.75</div></div></div>
+  <div class="tr"><div class="trs"><span style="font-family:'DM Mono',monospace;font-size:.73rem;color:var(--tm);letter-spacing:.04em;">// nexus.engine → trust.score: 87/100</span></div><div class="trm"><div class="trmn">Monospace</div><div class="trmv">DM Mono 400 · 11–13px · +0.04em</div></div></div>
+  <div class="tr"><div class="trs"><span style="font-family:'DM Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.18em;color:var(--v);">§ 04 · Evaluation Engine</span></div><div class="trm"><div class="trmn">Section Label</div><div class="trmv">DM Mono · 10–11px · UC · +0.18em</div></div></div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §05 SPACING -->
+<div class="s">
+  <div class="sn">§ 05 · Spacing &amp; Layout</div>
+  <h2>Spacing System</h2>
+  <p class="si">4px base unit. Generous spacing communicates confidence. 12-column grid desktop. Sections breathe — Stripe-like rhythm. Side margin 5vw.</p>
+  <table style="margin-bottom:22px;">
+    <thead><tr><th>Token</th><th>Value</th><th>Visual</th><th>Usage</th></tr></thead>
+    <tbody>
+      <tr><td>--space-1</td><td>4px</td><td><span class="spb" style="width:4px;"></span></td><td>Icon gaps, micro-spacing</td></tr>
+      <tr><td>--space-2</td><td>8px</td><td><span class="spb" style="width:8px;"></span></td><td>Badge padding, tight elements</td></tr>
+      <tr><td>--space-3</td><td>16px</td><td><span class="spb" style="width:16px;"></span></td><td>Card inner spacing, grid gaps</td></tr>
+      <tr><td>--space-4</td><td>24px</td><td><span class="spb" style="width:24px;"></span></td><td>Card padding, section headers</td></tr>
+      <tr><td>--space-5</td><td>32px</td><td><span class="spb" style="width:32px;"></span></td><td>Card generous padding</td></tr>
+      <tr><td>--space-6</td><td>48px</td><td><span class="spb" style="width:48px;"></span></td><td>Component-to-component gaps</td></tr>
+      <tr><td>--space-7</td><td>64px</td><td><span class="spb" style="width:64px;"></span></td><td>Section padding</td></tr>
+      <tr><td>--space-8</td><td>96px</td><td><span class="spb" style="width:96px;"></span></td><td>Large section padding</td></tr>
+      <tr><td>--space-9</td><td>128px</td><td><span class="spb" style="width:128px;"></span></td><td>Hero / full-section padding</td></tr>
+    </tbody>
+  </table>
+  <div class="g3">
+    <div class="c"><div class="cl">Border Radius</div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:.77rem;color:var(--ts);">
+        <span>4px — subtle / inline chips</span><span>8px — inputs &amp; small elements</span>
+        <span>12–14px — cards &amp; panels</span><span>18–20px — large panels</span><span>100px — pills &amp; badges</span>
+      </div>
+    </div>
+    <div class="c"><div class="cl">Grid</div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:.77rem;color:var(--ts);">
+        <span>12-col desktop</span><span>8-col tablet</span><span>4-col mobile</span><span>Gutter: 24px</span><span>Max-width: 1280px</span>
+      </div>
+    </div>
+    <div class="c"><div class="cl">Breakpoints</div>
+      <div style="display:flex;flex-direction:column;gap:4px;font-size:.77rem;color:var(--ts);">
+        <span>Mobile: ≤ 600px</span><span>Tablet: 601–1000px</span><span>Desktop: 1001–1280px</span><span>Wide: ≥ 1281px</span><span>Side margin: 5vw</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §06 COMPONENTS -->
+<div class="s">
+  <div class="sn">§ 06 · UI Components</div>
+  <h2>Component Library</h2>
+  <p class="si">All components are dark-mode native. Every interactive element responds to hover with elevation, glow, or gradient sweep. Glassmorphism, gradient borders, and monospace labels are the three visual signatures.</p>
+  <div class="g2" style="margin-bottom:14px;">
+    <div class="c"><div class="cl">Buttons</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="bp">Request Early Access →</div>
+        <div class="bs">Learn More</div>
+        <div class="bg_">Join the Conversation</div>
+      </div>
+    </div>
+    <div class="c"><div class="cl">Badges &amp; Status</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="bdv"><span class="dot"></span>Stealth Mode</div>
+        <div class="bdv bdp"><span class="dot"></span>NEXUS Verified</div>
+        <div class="bdv bdm"><span class="dot"></span>Angel Spark Active</div>
+      </div>
+    </div>
+    <div class="c"><div class="cl">Glass Card</div>
+      <div class="gc">
+        <div class="gct">Intent Capture Layer</div>
+        <div class="gcb">human.expertise → structured.intent → verified.output</div>
+      </div>
+    </div>
+    <div class="c"><div class="cl">Input Fields</div>
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <input class="inp_" placeholder="Your name or organization" readonly>
+        <input class="inp_" placeholder="info@theangelway.ai" readonly>
+      </div>
+    </div>
+  </div>
+  <div class="c"><div class="cl">Architecture Layer Stack — reusable pattern</div>
+    <div style="margin-top:8px;">
+      <div class="layer" style="background:rgba(155,106,255,0.08);border-color:rgba(155,106,255,0.2);border-left-color:#9B6AFF;">01 · Intent Capture <span class="lm_" style="background:rgba(155,106,255,0.1);color:#9B6AFF;border:1px solid rgba(155,106,255,0.2);">core</span></div>
+      <div class="layer" style="background:rgba(180,130,255,0.07);border-color:rgba(180,130,255,0.16);border-left-color:#B482FF;">02 · Knowledge Governance <span class="lm_" style="background:rgba(180,130,255,0.1);color:#B482FF;border:1px solid rgba(180,130,255,0.2);">active</span></div>
+      <div class="layer" style="background:rgba(224,139,255,0.06);border-color:rgba(224,139,255,0.14);border-left-color:#E08BFF;">03 · NEXUS Evaluation <span class="lm_" style="background:rgba(224,139,255,0.1);color:#E08BFF;border:1px solid rgba(224,139,255,0.2);">verify</span></div>
+      <div class="layer" style="background:rgba(255,107,214,0.06);border-color:rgba(255,107,214,0.15);border-left-color:#FF6BD6;">04 · Output Verification <span class="lm_" style="background:rgba(255,107,214,0.1);color:#FF6BD6;border:1px solid rgba(255,107,214,0.2);">guard</span></div>
+      <div class="layer" style="background:rgba(255,140,180,0.04);border-color:rgba(255,140,180,0.12);border-left-color:#FF8CB4;margin-bottom:0;">05 · Sovereign Delivery <span class="lm_" style="background:rgba(255,140,180,0.08);color:#FF8CB4;border:1px solid rgba(255,140,180,0.18);">output</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §07 THE A-N-G-E-L PROTOCOL -->
+<div class="s">
+  <div class="sn">§ 07 · The A-N-G-E-L Protocol</div>
+  <h2>Methodology</h2>
+  <p class="si">The non-negotiable operational sequence. Every angel.ai output follows these five steps — in order, without exception — ensuring human authority governs every stage of AI execution.</p>
+
+  <div class="prot">
+    <div class="pstep">
+      <div class="psl"><div class="psc"><span class="psltr">A</span></div><div class="psline"></div></div>
+      <div class="psr">
+        <div class="pslbl">Step 01 · Assess</div>
+        <div class="psti"><span class="vb">Assess</span> — Define the Goal &amp; the Need</div>
+        <div class="psde">Define the specific goal and the crisis-driven need of the audience. No output begins without a precise understanding of who needs guidance and why they need it now.</div>
+        <div class="pstag">human intent · audience first</div>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="psl"><div class="psc"><span class="psltr">N</span></div><div class="psline"></div></div>
+      <div class="psr">
+        <div class="pslbl">Step 02 · Navigate</div>
+        <div class="psti"><span class="vb">Navigate</span> — Map the Safe Zone</div>
+        <div class="psde">Set strict boundaries on what the AI is never allowed to say. The Safe Zone is a non-negotiable perimeter — defining what is out of bounds before any generation begins.</div>
+        <div class="pstag">safety guardrails · hard limits</div>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="psl"><div class="psc"><span class="psltr">G</span></div><div class="psline"></div></div>
+      <div class="psr">
+        <div class="pslbl">Step 03 · Generate</div>
+        <div class="psti"><span class="vb">Generate</span> — Codify into Locked Records</div>
+        <div class="psde">Codify expertise into a multi-layered framework — Locked Records. Raw professional knowledge becomes structured, traceable digital assets that cannot be distorted by AI reinterpretation.</div>
+        <div class="pstag">locked records · ai power</div>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="psl"><div class="psc"><span class="psltr">E</span></div><div class="psline"></div></div>
+      <div class="psr">
+        <div class="pslbl">Step 04 · Evaluate</div>
+        <div class="psti"><span class="vb">Evaluate</span> — Safety &amp; Accuracy Audit</div>
+        <div class="psde">Conduct the full Safety and Accuracy Audit via the NEXUS layer. Every asset is scored across 16 dimensions of integrity, impact, and safety before any publication is permitted.</div>
+        <div class="pstag">nexus engine · 16-dimension audit</div>
+      </div>
+    </div>
+    <div class="pstep">
+      <div class="psl"><div class="psc"><span class="psltr">L</span></div><div class="psline"></div></div>
+      <div class="psr">
+        <div class="pslbl">Step 05 · Leverage</div>
+        <div class="psti"><span class="vb">Leverage</span> — Deploy at AI Speed</div>
+        <div class="psde">Deploy verified assets into environments at AI speed, with human authority. Scale is not a compromise — it is proof of the system working exactly as designed.</div>
+        <div class="pstag">sovereign deploy · human authority</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="formula">
+    <div class="flbl">ASM Formula</div>
+    <div class="feq">
+      <span class="fbrand">Angel Spark</span>
+      <span class="fop">=</span>
+      <span class="ft1">Human Intent</span>
+      <span class="fop">+</span>
+      <span class="ft2">AI Power</span>
+      <span class="fop">+</span>
+      <span class="ft3">Safety Guardrails</span>
+    </div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §08 ICONS -->
+<div class="s">
+  <div class="sn">§ 08 · Icon System</div>
+  <h2>Flat SVG Icons</h2>
+  <p class="si">All icons are flat, stroke-based SVGs in violet <code style="font-family:'DM Mono',monospace;font-size:.82em;color:var(--v);">#9B6AFF</code>. Stroke-width 1.6–1.8px at 22×22px. Never use emoji in UI — always use these SVG icons.</p>
+  <div class="igd">
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6v8c0 5 3.5 6.5 8 8 4.5-1.5 8-3 8-8V6L11 2z" stroke="#9B6AFF" stroke-width="1.6" stroke-linejoin="round"/></svg><div class="in">Intent</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" fill="none" stroke="#9B6AFF" stroke-width="2.5"/></svg><div class="in">Mark</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v16M7 19h8" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round"/><path d="M4 10l2.5 4H1.5L4 10zM18 10l-2.5 4h5L18 10z" fill="#9B6AFF"/><path d="M4 10h14" stroke="#9B6AFF" stroke-width="1.3" stroke-linecap="round"/></svg><div class="in">NEXUS</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3.5" y="10.5" width="15" height="10" rx="2.5" stroke="#9B6AFF" stroke-width="1.6"/><path d="M7 10.5V7.5a4 4 0 0 1 8 0v3" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round"/></svg><div class="in">Sovereign</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M2 11s4-7 9-7 9 7 9 7-4 7-9 7-9-7-9-7z" stroke="#9B6AFF" stroke-width="1.6" stroke-linejoin="round"/><circle cx="11" cy="11" r="3" fill="#9B6AFF"/></svg><div class="in">Visibility</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M8 11H4a4 4 0 1 1 0-8h4M14 11h4a4 4 0 1 1 0 8h-4M7 11h8" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round"/></svg><div class="in">Traceable</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="4" stroke="#9B6AFF" stroke-width="1.6"/><path d="M3 20c0-4.5 3.5-7 8-7s8 2.5 8 7" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round"/></svg><div class="in">Expert</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#9B6AFF" stroke-width="1.6"/><path d="M11 7v5l3 3" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="in">Guidance</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l2.5 6h6.5l-5 4 2 6.5L11 15l-6 3.5 2-6.5L2 8h6.5L11 2z" stroke="#9B6AFF" stroke-width="1.5" stroke-linejoin="round"/></svg><div class="in">Evaluate</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L3 6v8c0 5 3.5 6.5 8 8 4.5-1.5 8-3 8-8V6L11 2z" stroke="#9B6AFF" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.5 11l2.5 2.5 5-5.5" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="in">Ethics</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="#9B6AFF" stroke-width="1.6"/><path d="M7 11l3 3 5-6" stroke="#9B6AFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="in">Verified</div></div>
+    <div class="ii"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M10 4.5L5.5 11H10L8 18 16.5 11H12L14 4.5H10z" stroke="#9B6AFF" stroke-width="1.5" stroke-linejoin="round"/></svg><div class="in">Action</div></div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §09 MOTION -->
+<div class="s">
+  <div class="sn">§ 09 · Motion &amp; Animation</div>
+  <h2>Animation Language</h2>
+  <p class="si">Scientific, fluid, intentional. Speed is slow and refined. Motion reveals structure — it never decorates.</p>
+  <div style="margin-bottom:18px;">
+    <div class="tkr"><div class="tkk">--ease-standard</div><div class="tkv">cubic-bezier(0.4,0,0.2,1)</div><div class="tkd">Standard UI transitions</div></div>
+    <div class="tkr"><div class="tkk">--ease-enter</div><div class="tkv">cubic-bezier(0,0,0.2,1)</div><div class="tkd">Elements entering viewport</div></div>
+    <div class="tkr"><div class="tkk">--ease-exit</div><div class="tkv">cubic-bezier(0.4,0,1,1)</div><div class="tkd">Elements leaving viewport</div></div>
+    <div class="tkr"><div class="tkk">--dur-instant</div><div class="tkv">80ms</div><div class="tkd">Hover color changes</div></div>
+    <div class="tkr"><div class="tkk">--dur-fast</div><div class="tkv">200ms</div><div class="tkd">Micro-interactions, button states</div></div>
+    <div class="tkr"><div class="tkk">--dur-base</div><div class="tkv">350ms</div><div class="tkd">Card hover, panel transitions</div></div>
+    <div class="tkr"><div class="tkk">--dur-slow</div><div class="tkv">700ms</div><div class="tkd">Scroll reveals, section entries</div></div>
+    <div class="tkr"><div class="tkk">--dur-ambient</div><div class="tkv">3–10s</div><div class="tkd">Orb floats, logo glow, particle drift</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Animation</th><th>Effect</th><th>Trigger</th><th>Timing</th></tr></thead>
+    <tbody>
+      <tr><td>fadeSlideUp</td><td>Opacity 0→1 + Y 20px→0</td><td>Scroll enter</td><td>700ms ease</td></tr>
+      <tr><td>orbFloat</td><td>TranslateY ±30px + scale→1.05</td><td>Ambient loop</td><td>8–10s infinite</td></tr>
+      <tr><td>flowSweep</td><td>White shimmer across gradient line</td><td>Data lines</td><td>2.5s linear infinite</td></tr>
+      <tr><td>pulse</td><td>Box-shadow expand + opacity cycle</td><td>Status dots</td><td>2s ease infinite</td></tr>
+      <tr><td>Card hover</td><td>TranslateY -4–6px + glow shadow</td><td>Mouse enter</td><td>350ms ease</td></tr>
+      <tr><td>Mouse-track</td><td>Radial glow follows cursor in card</td><td>Mouse move</td><td>Immediate</td></tr>
+      <tr><td>Score bar</td><td>Width 0%→N% on bar</td><td>Viewport enter</td><td>1.5s ease</td></tr>
+      <tr><td>Stagger reveal</td><td>Sequential children fade up</td><td>Parent enters view</td><td>80ms delay/item</td></tr>
+      <tr><td>Particle canvas</td><td>Drifting nodes + mouse attraction</td><td>Page bg ambient</td><td>rAF loop</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="rule"></div>
+
+<!-- §10 VOICE & TONE -->
+<div class="s">
+  <div class="sn">§ 10 · Voice &amp; Tone</div>
+  <h2>How angel.ai Speaks</h2>
+  <p class="si">Every word is chosen deliberately. We speak with the quiet authority of an institution that knows exactly what it's building — and why it matters.</p>
+  <div class="g2" style="margin-bottom:18px;">
+    <div class="tn do"><h4>Write Like This ✓</h4>
+      <ul>
+        <li>Precise and specific — no vague AI hype</li>
+        <li>Calm confidence — state facts, not claims</li>
+        <li>Technical enough to be credible</li>
+        <li>Human-centered — foreground the expert</li>
+        <li>Short declarative sentences</li>
+        <li>Analogies: "Like Stripe for X"</li>
+        <li>Acknowledge what we're still building</li>
+      </ul>
+    </div>
+    <div class="tn dont"><h4>Never Write This ✗</h4>
+      <ul>
+        <li>"Revolutionary" or "disruptive"</li>
+        <li>Hype language or buzzword stacking</li>
+        <li>Passive voice or corporate hedging</li>
+        <li>Fear-mongering about AI</li>
+        <li>"Unlock your potential" type copy</li>
+        <li>Jargon without explanation</li>
+        <li>Exclamation marks in formal contexts</li>
+      </ul>
+    </div>
+  </div>
+  <div class="c" style="display:flex;flex-direction:column;gap:9px;">
+    <div style="display:flex;gap:14px;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;padding-top:2px;">Hero tone</span><span style="font-size:.8rem;color:var(--ts);">Bold, declarative statements. Short. Present tense. First word should own the screen.</span></div>
+    <div style="display:flex;gap:14px;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;padding-top:2px;">Body tone</span><span style="font-size:.8rem;color:var(--ts);">Precise and warm. Explains mechanisms without oversimplifying. Respects reader intelligence.</span></div>
+    <div style="display:flex;gap:14px;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;padding-top:2px;">UI labels</span><span style="font-family:'DM Mono',monospace;font-size:.7rem;color:var(--tm);">// terse · technical · lowercase · no periods</span></div>
+    <div style="display:flex;gap:14px;"><span style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--tm);min-width:80px;padding-top:2px;">Outreach</span><span style="font-size:.8rem;color:var(--ts);">Conversational, considered, selective. We invite — we don't pitch. "Thoughtful people who share our priorities."</span></div>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<!-- §11 MASTER PROMPT -->
+<div class="s">
+  <div class="sn">§ 11 · Master Design Prompt</div>
+  <h2>Universal Creative Brief</h2>
+  <p class="si">Paste this into any AI image tool, hand it to any designer or agency, or use it as the foundation for any creative asset — website, deck, social, video, email, print, ads.</p>
+  <div class="pb"><pre><span class="pc2">═══════════════════════════════════════════════
+  ANGEL.AI — UNIVERSAL DESIGN BRIEF
+  Apply to: web · social · decks · video · print
+═══════════════════════════════════════════════</span>
+
+<span class="pk2">BRAND:</span>        <span class="pv2">angel.ai</span>
+<span class="pk2">TAGLINE:</span>      <span class="pv2">The Governance Layer for Human-Led AI Execution</span>
+<span class="pk2">ONE-LINER:</span>    <span class="pv2">Bridging the Action Gap. Human intent first. Always.</span>
+<span class="pk2">STATUS:</span>       <span class="pv2">Stealth mode — deliberate, selective, precise</span>
+<span class="pk2">CONTACT:</span>      <span class="pv2">info@theangelway.ai · theangelway.ai</span>
+
+<span class="pc2">── LOGO ─────────────────────────────────────────</span>
+
+<span class="pk2">RING MARK:</span>
+<span class="pv2">  Hollow circle — gradient stroke #7B4FFF → #CC44EE → #FF55BB at 135°.
+  No fill. Stroke-width ~28% of diameter.
+  On colored or gradient backgrounds: switch to white stroke only.
+  Never apply gradient to the ring when background is already a gradient.</span>
+
+<span class="pk2">WORDMARK:</span>
+<span class="pv2">  "angel.ai" — always pure white #FFFFFF. Poppins 700. Tracking -0.02em.
+  Never violet. Never gradient. Never any color other than white.
+  Dark backgrounds only. Never on light or white surfaces.</span>
+
+<span class="pc2">── AESTHETIC ────────────────────────────────────</span>
+
+<span class="pk2">FEEL:</span>
+<span class="pv2">  Calm authority · Intellectual depth · Precision engineering
+  Futuristic but restrained · Stealth research lab atmosphere
+  References: Stripe, Linear, Vercel, Anthropic — but darker,
+  more architectural, more sovereign</span>
+
+<span class="pk2">NEVER:</span>
+<span class="pv2">  Robots · brains · neural net clichés · circuit boards as decor
+  Light backgrounds · warm metallic · gold · orange
+  Playful · startup-casual · hype-driven · emoji in UI</span>
+
+<span class="pc2">── COLOR ────────────────────────────────────────</span>
+
+<span class="pk2">BACKGROUNDS (dark-first, always):</span>
+<span class="pv2">  Deep Black:        #0A0A12   primary page background
+  Soft Dark Purple:  #121021   section backgrounds
+  Dark Gradient:     #16132a   alternate sections</span>
+
+<span class="pk2">LOGO RING GRADIENT:</span>
+<span class="pp2">  #7B4FFF → #CC44EE → #FF55BB   at 135°</span>
+
+<span class="pk2">UI ACCENT COLORS (never on logo text):</span>
+<span class="pv2">  Violet:            #9B6AFF   primary UI accent, CTAs, icons
+  Pink:              #FF6BD6   secondary energy
+  Lavender:          #eadcf8   text fills, pastel accents
+  Mid Purple:        #B482FF   layer accents</span>
+
+<span class="pk2">TEXT HIERARCHY:</span>
+<span class="pv2">  Primary:           #f0ecff   headlines
+  Secondary:         #a89dc4   body copy
+  Muted:             #5a5272   labels, captions</span>
+
+<span class="pk2">UI GRADIENTS (135° · never on logo text):</span>
+<span class="pp2">  Primary:    #9B6AFF → #FF6BD6</span>
+<span class="pv2">  Soft:       #6C63FF → #E08BFF
+  Pastel:     #9B6AFF → #eadcf8
+  Glow orb:   radial rgba(#9B6AFF,0.15)→transparent, blur 60–80px
+  Divider:    transparent→#9B6AFF→#FF6BD6→transparent</span>
+
+<span class="pc2">── TYPOGRAPHY ───────────────────────────────────</span>
+
+<span class="pk2">DISPLAY / BODY:</span>    <span class="pv2">Poppins (800 hero · 700 h1 · 600 h2 · 400 body)</span>
+<span class="pk2">TECHNICAL / LABELS:</span> <span class="pv2">DM Mono (section labels, badges, scores, code-style UI)</span>
+
+<span class="pk2">SIZING:</span>
+<span class="pv2">  Hero:     48–88px · Poppins 800 · tracking -0.04em
+  H1:       32–48px · Poppins 700 · tracking -0.03em
+  H2:       22–32px · Poppins 700 · tracking -0.02em
+  Body:     15–16px · Poppins 400 · line-height 1.75
+  Label:    10–11px · DM Mono · uppercase · tracking +0.15em</span>
+
+<span class="pc2">── VISUAL ELEMENTS ──────────────────────────────</span>
+
+<span class="pk2">SIGNATURE PATTERNS:</span>
+<span class="pv2">  · Constellation particle networks — thin lines 0.5px, glowing nodes
+  · Glassmorphism cards — dark fill + gradient top-border 1.5px + blur
+  · Architecture layer stacks — left-border violet→pink color ramp
+  · NEXUS score bars — gradient fill, animated grow on scroll
+  · Dot grid background — 5–8% opacity, 48–52px spacing
+  · Radial glow orbs — multiple per scene, blurred, &lt;18% opacity
+  · Flat stroke SVG icons in #9B6AFF — never emoji</span>
+
+<span class="pc2">── THE A-N-G-E-L PROTOCOL ───────────────────────</span>
+
+<span class="pv2">  A — Assess:   Define the specific goal and crisis-driven need
+  N — Navigate: Map the Safe Zone — boundaries AI never crosses
+  G — Generate: Codify expertise into multi-layered Locked Records
+  E — Evaluate: Full Safety &amp; Accuracy Audit via NEXUS (16 dims)
+  L — Leverage: Deploy verified assets at AI speed, human authority</span>
+
+<span class="pk2">ASM FORMULA:</span>
+<span class="pp2">  Angel Spark = (Human Intent) + (AI Power) + (Safety Guardrails)</span>
+
+<span class="pc2">── KEY CONCEPTS ─────────────────────────────────</span>
+
+<span class="pv2">  · The Action Gap (human intent vs machine generation)
+  · Architecture of Trust
+  · NEXUS Engine — 16-dimension evaluation
+  · Five-Layer Constitution
+  · ANGEL values: Accountable · Nimble · Generative · Ethical · Legitimate
+  · Digital Twin — expert working 24/7
+  · "Like Stripe for payments, but for verified knowledge"</span>
+
+<span class="pc2">═══════════════════════════════════════════════</span></pre></div>
+</div>
+
+</div><!-- end doc -->
+
+<div class="df">
+  <div>angel.ai Brand System · v1.0 · Confidential</div>
+  <div>info@theangelway.ai · theangelway.ai</div>
+</div>
+
+</body>
+</html>

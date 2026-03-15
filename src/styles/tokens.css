@@ -1,0 +1,125 @@
+:root {
+  /* Colors */
+  --color-bg: #0a0a12;
+  --color-bg-surface: #121021;
+  --color-bg-alt: #16132a;
+  --color-white: #ffffff;
+
+  --color-text-primary: #f0ecff;
+  --color-text-secondary: #a89dc4;
+  --color-text-muted: #5a5272;
+
+  --color-brand-violet: #9b6aff;
+  --color-brand-pink: #ff6bd6;
+  --color-brand-lavender: #eadcf8;
+  --color-brand-mid: #b482ff;
+
+  --color-ring-start: #7b4fff;
+  --color-ring-mid: #cc44ee;
+  --color-ring-end: #ff55bb;
+
+  --color-border-subtle: rgba(155,106,255,0.13);
+  --color-border-strong: rgba(155,106,255,0.25);
+  --color-glass-fill: rgba(155,106,255,0.04);
+  --color-glass-fill-strong: rgba(18,16,33,0.8);
+  --color-bg-alpha-60: rgba(10,10,18,0.6);
+  --color-bg-alpha-70: rgba(18,16,33,0.7);
+  --color-bg-alpha-72: rgba(10,10,18,0.72);
+  --color-bg-alpha-95: rgba(18,16,33,0.95);
+  --color-white-02: rgba(255,255,255,0.02);
+  --color-white-06: rgba(255,255,255,0.06);
+  --color-violet-06: rgba(155,106,255,0.06);
+  --color-violet-08: rgba(155,106,255,0.08);
+  --color-violet-10: rgba(155,106,255,0.1);
+  --color-violet-12: rgba(155,106,255,0.12);
+  --color-violet-15: rgba(155,106,255,0.15);
+  --color-violet-20: rgba(155,106,255,0.2);
+  --color-violet-28: rgba(155,106,255,0.28);
+  --color-violet-30: rgba(155,106,255,0.3);
+  --color-pink-07: rgba(255,107,214,0.07);
+  --color-pink-08: rgba(255,107,214,0.08);
+  --color-pink-10: rgba(255,107,214,0.1);
+  --color-pink-20: rgba(255,107,214,0.2);
+  --color-pink-50: rgba(255,107,214,0.5);
+  --color-mid-08: rgba(180,130,255,0.08);
+  --color-mid-10: rgba(180,130,255,0.1);
+  --color-mid-20: rgba(180,130,255,0.2);
+  --color-indigo-12: rgba(108,99,255,0.12);
+  --color-indigo-20: rgba(108,99,255,0.2);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg,#9b6aff,#ff6bd6);
+  --grad-soft: linear-gradient(135deg,#6c63ff,#e08bff);
+  --grad-pastel: linear-gradient(135deg,#9b6aff,#eadcf8);
+  --grad-ring: linear-gradient(135deg,#7b4fff,#cc44ee,#ff55bb);
+  --grad-divider: linear-gradient(90deg,transparent,rgba(155,106,255,0.4),rgba(255,107,214,0.3),transparent);
+  --grad-glass: linear-gradient(135deg,rgba(155,106,255,0.07),rgba(255,107,214,0.03));
+  --grad-orb-violet: radial-gradient(circle, rgba(155,106,255,0.18), transparent 70%);
+  --grad-orb-pink: radial-gradient(circle, rgba(255,107,214,0.14), transparent 70%);
+
+  /* Typography */
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Poppins", sans-serif;
+  --font-mono: "DM Mono", monospace;
+
+  --weight-display-1: 800;
+  --weight-display-2: 700;
+  --weight-display-3: 600;
+  --weight-body: 400;
+
+  --tracking-hero: -0.04em;
+  --tracking-h1: -0.03em;
+  --tracking-h2: -0.02em;
+  --tracking-label: 0.15em;
+
+  --lh-body: 1.75;
+  --lh-tight: 1.1;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+
+  /* Radii */
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --radius-3: 12px;
+  --radius-4: 14px;
+  --radius-5: 18px;
+  --radius-6: 20px;
+  --radius-pill: 999px;
+
+  /* Shadows / Glows */
+  --shadow-card: 0 20px 60px rgba(0,0,0,0.3);
+  --shadow-hover: 0 12px 36px rgba(155,106,255,0.2);
+  --glow-violet: 0 0 24px rgba(155,106,255,0.28);
+  --glow-pink: 0 0 24px rgba(255,107,214,0.22);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4,0,0.2,1);
+  --ease-enter: cubic-bezier(0,0,0.2,1);
+  --ease-exit: cubic-bezier(0.4,0,1,1);
+
+  --dur-instant: 80ms;
+  --dur-fast: 200ms;
+  --dur-base: 350ms;
+  --dur-slow: 700ms;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-pad: 5vw;
+  --grid-gutter: 24px;
+
+  /* Layer accents */
+  --layer-1: #9b6aff;
+  --layer-2: #b482ff;
+  --layer-3: #e08bff;
+  --layer-4: #ff6bd6;
+  --layer-5: #ff8cb4;
+}

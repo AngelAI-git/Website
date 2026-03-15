@@ -3,10 +3,13 @@ import SectionLabel from '../components/SectionLabel';
 export default function CTA() {
   return (
     <section className="section section--gradient" id="contact">
-      <div className="container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <div className="contact-card glass-card reveal" style={{ maxWidth: '800px', width: '100%', padding: 'var(--space-10)', textAlign: 'center', position: 'relative' }}>
-          <SectionLabel className="reveal">Say Hello</SectionLabel>
-          <h2 className="feature__title reveal reveal--delay-1" style={{ marginBottom: 'var(--space-6)', marginTop: 'var(--space-4)' }}>We're Selectively Sharing Early Conversations</h2>
+      <div className="container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <SectionLabel className="reveal" style={{ marginBottom: 'var(--space-8)' }}>Say Hello</SectionLabel>
+        
+        <div className="contact-card glass-card reveal" style={{ maxWidth: '900px', width: '100%', padding: 'var(--space-24) var(--space-12) var(--space-16)', textAlign: 'center', position: 'relative' }}>
+          <h2 className="feature__title reveal reveal--delay-1" style={{ marginBottom: 'var(--space-8)', marginTop: 'var(--space-6)' }}>We're Selectively Sharing Early Conversations</h2>
+
+
           <p className="feature__copy feature__copy--lead reveal reveal--delay-2" style={{ marginBottom: 'var(--space-8)' }}>
             Thoughtful people and organizations who share our priorities are welcome to reach out. We believe in the same care we build into our products — considered, intentional conversations.
           </p>

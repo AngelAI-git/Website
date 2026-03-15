@@ -54,12 +54,8 @@ export default function Methodology() {
             <div className="protocol__circle">
               <span className="protocol__letter">{step.letter}</span>
             </div>
-            {index < steps.length - 1 && (
-              <>
-                <div className="protocol__step-racer" />
-                <div className="protocol__step-racer protocol__step-racer--2" />
-              </>
-            )}
+            {index < steps.length - 1 && <div className="protocol__step-racer" />}
+
             <div className="protocol__content">
               <div className="protocol__label">{step.label}</div>
               <div className="protocol__title">{step.title}</div>

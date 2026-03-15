@@ -1807,6 +1807,31 @@
     text-transform: uppercase;
   }
 
+  .footer__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .footer__links a {
+    color: var(--color-text-muted);
+    transition: color var(--dur-base) var(--ease-standard);
+  }
+
+  .footer__links a:hover {
+    color: var(--color-brand-lavender);
+  }
+
+  .formula__operator {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-brand-violet);
+    margin: 0 var(--space-2);
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
   @media (max-width: 1000px) {
     .hero__layout,
     .feature-grid,
@@ -1872,6 +1897,11 @@
 
     .values-grid {
       grid-template-columns: 1fr;
+    }
+
+    .formula__operator {
+      font-size: 1.1rem;
+      margin: 0 var(--space-1);
     }
 
     .dimension-grid {

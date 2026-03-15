@@ -68,11 +68,11 @@ export default function Methodology() {
         <div className="formula__title">The ASM Formula</div>
         <div className="formula__eq">
           <span className="formula__brand">Angel Spark Method</span>
-          <span className="diagram__label">=</span>
+          <span className="formula__operator">=</span>
           <span className="formula__term term--human">(Human Intent)</span>
-          <span className="diagram__label">+</span>
+          <span className="formula__operator">+</span>
           <span className="formula__term term--ai">(AI Power)</span>
-          <span className="diagram__label">+</span>
+          <span className="formula__operator">+</span>
           <span className="formula__term term--safety">(Safety Guardrails)</span>
         </div>
       </div>

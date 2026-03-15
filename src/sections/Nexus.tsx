@@ -89,7 +89,7 @@ export default function Nexus() {
             <div className="dimension-grid">
               {dimensions.map((item) => (
                 <div key={item.label} className="dimension">
-                  <span className="dimension__label">{item.label}</span>
+                  <span className="dimension__label">{item.label} — {item.value}</span>
                   <div className="dimension__bar">
                     <span 
                       className="dimension__fill" 

@@ -3,7 +3,7 @@ import SectionLabel from '../components/SectionLabel';
 
 export default function SocialProof() {
   return (
-    <section className="section section--alt" id="solution">
+    <section className="section section--alt" id="need">
       <div className="section__header">
         <SectionLabel className="reveal">The Dual Crisis</SectionLabel>
         <h2 className="feature__title reveal reveal--delay-1">Two Problems. One Architecture.</h2>

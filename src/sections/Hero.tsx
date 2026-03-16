@@ -10,7 +10,7 @@ export default function Hero() {
         <div>
           <Badge className="hero-load hero-load--1">Stealth Mode · Building Deliberately</Badge>
           <h1 className="hero__title hero-load hero-load--2">
-            Bridge the <span>Action Gap.</span>
+            Bridge the <span>Action Gap</span>
           </h1>
           <p className="hero__sub hero-load hero-load--3">
             We're building the infrastructure layer for human-led AI execution. Welcome to Verified Intelligence.

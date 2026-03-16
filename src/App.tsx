@@ -15,6 +15,9 @@ import Footer from './sections/Footer';
 
 export default function App() {
   useEffect(() => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
+    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__link'));
+
     const animateCount = (el: HTMLElement) => {
       if (el.dataset.counted === 'true') return;
       const target = Number(el.dataset.count || 0);
@@ -63,24 +66,23 @@ export default function App() {
     document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => observer.observe(el));
     document.querySelectorAll<HTMLElement>('[data-animate]').forEach((el) => observer.observe(el));
-    const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'));
-    const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav__link'));
 
-    const handleScroll = () => {
-      const scrollY = window.scrollY + 120;
-      let current = '';
-      sections.forEach((section) => {
-        if (scrollY >= section.offsetTop) current = section.id;
-      });
-      navLinks.forEach((link) => {
-        const href = link.getAttribute('href');
-        if (!href) return;
-        link.classList.toggle('is-active', href === `#${current}`);
-      });
-    };
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach((link) => {
+              const href = link.getAttribute('href');
+              link.classList.toggle('is-active', href === `#${id}`);
+            });
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '-20% 0px -60% 0px' },
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    sections.forEach((section) => sectionObserver.observe(section));
 
     const glowCards = Array.from(document.querySelectorAll<HTMLElement>('.glow-card'));
     const handleGlowMove = (event: MouseEvent) => {
@@ -103,7 +105,7 @@ export default function App() {
 
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
+      sectionObserver.disconnect();
       glowCards.forEach((card) => {
         card.removeEventListener('mousemove', handleGlowMove);
         card.removeEventListener('mouseleave', handleGlowLeave);

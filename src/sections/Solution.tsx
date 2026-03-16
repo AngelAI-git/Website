@@ -45,7 +45,7 @@ export default function Solution() {
   return (
     <section className="section section--gradient" id="solution">
       <div className="solution-grid container">
-        <div>
+        <div className="solution__content">
           <SectionLabel className="reveal">The Solution</SectionLabel>
           <h2 className="feature__title reveal reveal--delay-1">We Turn Expertise Into Sovereign Digital Assets</h2>
           <p className="feature__copy reveal reveal--delay-2">
@@ -65,7 +65,11 @@ export default function Solution() {
               </div>
             ))}
           </div>
+          <div className="solution-callout reveal reveal--delay-3">
+            CODIFY FIRST, LEVERAGE FOREVER.
+          </div>
         </div>
+
         <Card className="pipeline-card reveal reveal--delay-2">
           <div className="diagram__label">// automated knowledge factory</div>
           <div className="pipeline">

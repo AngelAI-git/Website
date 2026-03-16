@@ -4,7 +4,7 @@ type ButtonProps = {
   href: string;
   children: ReactNode;
   variant?: 'primary' | 'secondary' | 'ghost';
-  size?: 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
   style?: React.CSSProperties;
 };
@@ -17,7 +17,7 @@ export default function Button({
   className = '',
   style,
 }: ButtonProps) {
-  const sizeClass = size === 'lg' ? 'btn--lg' : '';
+  const sizeClass = size === 'lg' ? 'btn--lg' : size === 'sm' ? 'btn--sm' : '';
   return (
     <a href={href} className={`btn btn--${variant} ${sizeClass} ${className}`.trim()} style={style}>
       {children}

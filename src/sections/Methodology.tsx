@@ -41,12 +41,23 @@ const steps = [
 export default function Methodology() {
   return (
     <section className="section" id="method">
-      <div className="section__header">
+      <div className="section__header section__header--left container">
         <SectionLabel className="reveal">Methodology</SectionLabel>
-        <h2 className="feature__title reveal reveal--delay-1">The ASM Formula</h2>
+        <h2 className="feature__title reveal reveal--delay-1">The Angel Spark Method</h2>
         <p className="feature__copy reveal reveal--delay-2">
-          The non-negotiable operational sequence. Every angel.ai output follows these five steps — in order, without exception — ensuring human authority governs every stage of AI execution.
+          The Angel Spark Method (ASM) is our proprietary governance protocol that ensures human intent remains the sovereign authority over machine execution. By inserting a structured "constitution" between raw expertise and AI generation, we transform wisdom into high-fidelity digital assets that are traceable, evidence-based, and free from the uncertainty of machine-generated noise.
         </p>
+      </div>
+      <div className="protocol container reveal">
+        <h3 className="protocol__intro" style={{ 
+          fontFamily: 'var(--font-display)', 
+          fontSize: '1.2rem', 
+          fontWeight: 600, 
+          marginBottom: 'var(--space-5)',
+          color: 'var(--color-brand-lavender)'
+        }}>
+          The A-N-G-E-L Protocol is the non-negotiable operational sequence:
+        </h3>
       </div>
       <div className="protocol">
         {steps.map((step, index) => (

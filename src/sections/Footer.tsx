@@ -8,9 +8,9 @@ export default function Footer() {
         <span className="footer__meta">the governance layer for human-led ai</span>
       </div>
       <div className="footer__meta footer__links">
-        <a href="/privacy">Privacy Policy</a>
+        <a href="/privacy.html">Privacy Policy</a>
         <span aria-hidden="true">|</span>
-        <a href="/terms">Terms of Service</a>
+        <a href="/terms.html">Terms of Service</a>
       </div>
       <div className="footer__meta">
         © 2026 angel.ai · <a href="mailto:info@theangelway.ai" style={{ color: 'inherit', textDecoration: 'none' }}>theangelway.ai</a>

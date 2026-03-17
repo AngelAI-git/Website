@@ -47,16 +47,18 @@ export default function Ambient() {
     };
 
     const drawConnections = () => {
+      // Optimized connection check: step by 2 to reduce O(n^2) impact
       for (let i = 0; i < particles.length; i += 1) {
-        for (let j = i + 1; j < particles.length; j += 1) {
+        for (let j = i + 1; j < particles.length; j += 2) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 110) {
-            const alpha = (1 - dist / 110) * 0.12;
+          const distSq = dx * dx + dy * dy;
+          if (distSq < 8100) { // 90px squared (reduced from 110)
+            const dist = Math.sqrt(distSq);
+            const alpha = (1 - dist / 90) * 0.1;
             ctx.beginPath();
             ctx.strokeStyle = `rgba(155,106,255,${alpha})`;
-            ctx.lineWidth = 0.6;
+            ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -71,22 +73,24 @@ export default function Ambient() {
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < 0 || p.x > width || p.y < 0 || p.y > height) {
-          Object.assign(p, createParticle());
-        }
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
 
         const dx = mouse.x - p.x;
         const dy = mouse.y - p.y;
-        const dist = Math.hypot(dx, dy);
-        if (dist < 150) {
-          p.vx += (dx / dist) * 0.015;
-          p.vy += (dy / dist) * 0.015;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 14400) { // 120px squared
+          const dist = Math.sqrt(distSq);
+          p.vx += (dx / dist) * 0.01;
+          p.vy += (dy / dist) * 0.01;
         }
 
-        const speed = Math.hypot(p.vx, p.vy);
-        if (speed > 1.2) {
-          p.vx *= 0.95;
-          p.vy *= 0.95;
+        const speedSq = p.vx * p.vx + p.vy * p.vy;
+        if (speedSq > 1) {
+          p.vx *= 0.96;
+          p.vy *= 0.96;
         }
 
         ctx.beginPath();
@@ -105,12 +109,18 @@ export default function Ambient() {
 
     resize();
     animate();
-    window.addEventListener('resize', resize);
+    let resizeTimer: number;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(resize, 200);
+    };
+
+    window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', handleMouse, { passive: true });
 
     return () => {
       window.cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouse);
     };
   }, []);
@@ -118,10 +128,10 @@ export default function Ambient() {
   useEffect(() => {
     const glow = glowRef.current;
     if (!glow) return;
-    let gx = 0;
-    let gy = 0;
-    let tx = 0;
-    let ty = 0;
+    let gx = -500;
+    let gy = -500;
+    let tx = -500;
+    let ty = -500;
     let raf = 0;
 
     const handleMouse = (event: MouseEvent) => {
@@ -130,10 +140,10 @@ export default function Ambient() {
     };
 
     const animate = () => {
-      gx += (tx - gx) * 0.08;
-      gy += (ty - gy) * 0.08;
-      glow.style.left = `${gx}px`;
-      glow.style.top = `${gy}px`;
+      gx += (tx - gx) * 0.06;
+      gy += (ty - gy) * 0.06;
+      // Using transform for better compositor performance
+      glow.style.transform = `translate3d(${gx}px, ${gy}px, 0) translate(-50%, -50%)`;
       raf = window.requestAnimationFrame(animate);
     };
 

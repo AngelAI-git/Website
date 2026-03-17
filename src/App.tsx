@@ -90,17 +90,18 @@ export default function App() {
       const rect = card.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-      card.style.background = `radial-gradient(circle at ${x}px ${y}px, var(--color-violet-15), transparent 70%)`;
+      // Using CSS variables to avoid complex background string updates in JS
+      card.style.setProperty('--mouse-x', `${Math.round(x)}px`);
+      card.style.setProperty('--mouse-y', `${Math.round(y)}px`);
     };
     const handleGlowLeave = (event: MouseEvent) => {
       const card = event.currentTarget as HTMLElement;
-      card.style.background = '';
+      card.style.setProperty('--mouse-x', `-1000px`);
+      card.style.setProperty('--mouse-y', `-1000px`);
     };
     glowCards.forEach((card) => {
-      card.addEventListener('mousemove', handleGlowMove);
-      card.addEventListener('mouseleave', handleGlowLeave);
+      card.addEventListener('mousemove', handleGlowMove, { passive: true });
+      card.addEventListener('mouseleave', handleGlowLeave, { passive: true });
     });
 
     return () => {

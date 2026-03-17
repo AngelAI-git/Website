@@ -21,21 +21,29 @@ function Counter({ target }: { target: number }) {
 
   useEffect(() => {
     if (!hasStarted) return;
-    let start = 0;
+    let frameId: number;
     const duration = 1500;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
+    const startTimestamp = performance.now();
 
-    return () => clearInterval(timer);
+    const animate = (now: number) => {
+      const elapsed = now - startTimestamp;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Use easeOutQuad for smoother counting
+      const easedProgress = progress * (2 - progress);
+      const currentCount = Math.floor(easedProgress * target);
+
+      setCount(currentCount);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+
+    frameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frameId);
   }, [hasStarted, target]);
 
   return <span ref={elementRef}>{count}</span>;
